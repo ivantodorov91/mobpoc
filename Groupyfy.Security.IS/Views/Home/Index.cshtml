@@ -1,0 +1,55 @@
+@{
+    var version = typeof(IdentityServer4.Hosting.IdentityServerMiddleware).Assembly.GetName().Version.ToString();
+    
+    var user = User?.Identity?.Name;
+    var role = User?.Claims?.FirstOrDefault(x => x.Type.ToLower() == "role")?.Value;
+    var corporateId = User?.Claims?.FirstOrDefault(x => x.Type.ToLower() == "corporateid")?.Value;
+}
+
+<div class="welcome-page">
+    <div class="row page-header">
+        <div class="col-sm-10">
+            <h1>
+                <img class="icon" src="~/icon.jpg">
+                Welcome to IdentityServer4 @user
+                <small>(version @version)</small>
+                @if (!string.IsNullOrEmpty(user))
+                {
+                    <div>Your role is @role</div>
+                    @if (!string.IsNullOrEmpty(corporateId))
+                    {
+                        <div>For corporate @corporateId</div>
+                    }
+                }
+
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                IdentityServer publishes a
+                <a href="~/.well-known/openid-configuration">discovery document</a>
+                where you can find metadata and links to all the endpoints, key material, etc.
+            </p>
+        </div>
+        <div class="col-sm-8">
+            <p>
+                Click <a href="~/grants">here</a> to manage your stored grants.
+            </p>
+            <p>
+                Click <a href="~/admin">here</a> to manage your users and IdentityServer configuration.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <p>
+                Here are links to the
+                <a href="https://github.com/identityserver/IdentityServer4">source code repository</a>,
+                and <a href="https://github.com/identityserver/IdentityServer4.Samples">ready to use samples</a>.
+            </p>
+        </div>
+    </div>
+</div>

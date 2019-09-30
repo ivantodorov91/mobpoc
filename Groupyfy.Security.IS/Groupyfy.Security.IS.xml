@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Groupyfy.Security.IS</name>
+    </assembly>
+    <members>
+        <member name="M:Groupyfy.Security.IS.Controllers.AccountController.Login(System.String)">
+            <summary>
+            Entry point into the login workflow
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.AccountController.Login(Groupyfy.Security.IS.Models.Account.LoginInputModel,System.String)">
+            <summary>
+            Handle postback from username/password login
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.AccountController.Logout(System.String)">
+            <summary>
+            Show logout page
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.AccountController.Logout(Groupyfy.Security.IS.Models.Account.LogoutInputModel)">
+            <summary>
+            Handle logout page postback
+            </summary>
+        </member>
+        <member name="T:Groupyfy.Security.IS.Controllers.ConsentController">
+            <summary>
+            This controller processes the consent UI
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.ConsentController.Index(System.String)">
+            <summary>
+            Shows the consent screen
+            </summary>
+            <param name="returnUrl"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.ConsentController.Index(Groupyfy.Security.IS.Models.Consent.ConsentInputModel)">
+            <summary>
+            Handles the consent screen postback
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.ExternalController.Challenge(System.String,System.String)">
+            <summary>
+            initiate roundtrip to external authentication provider
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.ExternalController.Callback">
+            <summary>
+            Post processing of external authentication
+            </summary>
+        </member>
+        <member name="T:Groupyfy.Security.IS.Controllers.GrantsController">
+            <summary>
+            This sample controller allows a user to revoke grants given to clients
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.GrantsController.Index">
+            <summary>
+            Show list of grants
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.GrantsController.Revoke(System.String)">
+            <summary>
+            Handle postback to revoke a client
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Controllers.HomeController.Error(System.String)">
+            <summary>
+            Shows the error page
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Extensions.Extensions.IsPkceClientAsync(IdentityServer4.Stores.IClientStore,System.String)">
+            <summary>
+            Determines whether the client is configured to use PKCE.
+            </summary>
+            <param name="store">The store.</param>
+            <param name="client_id">The client identifier.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Groupyfy.Security.IS.ISConfig">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.ISConfig.GetIdentityResources">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Groupyfy.Security.IS.ISConfig.GetApis(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Groupyfy.Security.IS.ISConfig.GetClients">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Groupyfy.Security.IS.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Program.CreateWebHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Groupyfy.Security.IS.Startup">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Groupyfy.Security.IS.Startup.Configuration">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Groupyfy.Security.IS.Startup.Environment">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Groupyfy.Security.IS.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:Microsoft.Extensions.DependencyInjection.GroupyfyIdentityServerServiceCollectionExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.GroupyfyIdentityServerServiceCollectionExtensions.AddGroupyfyIdentity(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="service"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.GroupyfyIdentityServerServiceCollectionExtensions.AddGroupyfyIdentityServer(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Extensions.DependencyInjection.GroupyfyIdentityServerServiceCollectionExtensions.AddGroupyfyISAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Hosting.IHostingEnvironment)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+            <param name="env"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

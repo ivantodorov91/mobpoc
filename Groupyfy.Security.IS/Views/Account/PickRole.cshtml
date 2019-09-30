@@ -1,0 +1,39 @@
+﻿@model PickRoleViewModel
+
+<div class="login-page">
+    <div class="page-header">
+        <h1>Pick role</h1>
+    </div>
+
+    <partial name="_ValidationSummary" />
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Pick a role @Model.Username</h3>
+                </div>
+                <div class="panel-body">
+                    @foreach (KeyValuePair<string, string> item in Model.Roles)
+                    {
+                        <form asp-controller="Account" asp-action="PickRole" method="post">
+                            <input type="hidden" asp-for="ReturnUrl" />
+                            <fieldset>
+                                <div class="form-group">
+                                    <input id="@item.Key" type="hidden" asp-for="Role" value="@item.Key" />
+                                    <input id="@item.Value" type="hidden" asp-for="CorporateId" value="@item.Value" />
+                                    <button class="btn btn-default" name="button">@item.Key</button>
+                                    @if (!string.IsNullOrEmpty(item.Value))
+                                    {
+                                        <label asp-for="CorporateId">@item.Value</label>
+                                    }
+                                </div>
+
+                            </fieldset>
+                        </form>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
