@@ -45,7 +45,7 @@ namespace Groupyfy.Security.Persistence
         /// <param name="user">The user whose roles should be retrieved.</param>
         /// <param name="cancellationToken">The <see cref="CancellationToken"/> used to propagate notifications that the operation should be canceled.</param>
         /// <returns>A <see cref="Task{TResult}"/> that contains the roles the user is a member of.</returns>
-        public async Task<IList<KeyValuePair<string, Guid?>>> GetGroupyfyRolesAsync(GroupyfyUser user, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<IList<KeyValuePair<string, Guid?>>> GetGroupyfyRolesAsync(GroupyfyUser user, bool hasPassword = true, CancellationToken cancellationToken = default(CancellationToken))
         {
             cancellationToken.ThrowIfCancellationRequested();
             ThrowIfDisposed();
@@ -56,7 +56,7 @@ namespace Groupyfy.Security.Persistence
 
             return await Context.UserRoles
                 .Join(Context.Roles, ur => ur.RoleId, r => r.Id, (userRole, role) => new { UserRole = userRole, Role = role })
-                .Where(x => x.UserRole.RoleId == x.Role.Id && x.UserRole.UserId == user.Id)
+                .Where(x => x.UserRole.RoleId == x.Role.Id && x.UserRole.UserId == user.Id && x.Role.HasPassword == hasPassword)
                 .Select(x => new KeyValuePair<string, Guid?>(x.Role.Name, x.UserRole.CorporateId))
                 .ToListAsync(cancellationToken);
         }

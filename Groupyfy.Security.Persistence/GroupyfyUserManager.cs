@@ -52,7 +52,7 @@ namespace Groupyfy.Security.Persistence
         /// </summary>
         /// <param name="user">The user whose role names to retrieve.</param>
         /// <returns>The <see cref="Task"/> that represents the asynchronous operation, containing a list of role names.</returns>
-        public async Task<IList<KeyValuePair<string, Guid?>>> GetGroupyfyRolesAsync(GroupyfyUser user)
+        public async Task<IList<KeyValuePair<string, Guid?>>> GetGroupyfyRolesAsync(GroupyfyUser user, bool hasPassword = true)
         {
             ThrowIfDisposed();
             if (user == null)
@@ -60,7 +60,7 @@ namespace Groupyfy.Security.Persistence
                 throw new ArgumentNullException(nameof(user));
             }
 
-            return await GetUserRoleStore().GetGroupyfyRolesAsync(user, CancellationToken);
+            return await GetUserRoleStore().GetGroupyfyRolesAsync(user, hasPassword, CancellationToken);
         }
 
         /// <summary>

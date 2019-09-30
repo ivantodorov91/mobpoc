@@ -5,5 +5,6 @@ namespace Groupyfy.Security.Models.Identity
 {
     public class GroupyfyRole : IdentityRole<Guid>
     {
+        public bool? HasPassword { get; set; }
     }
 }
