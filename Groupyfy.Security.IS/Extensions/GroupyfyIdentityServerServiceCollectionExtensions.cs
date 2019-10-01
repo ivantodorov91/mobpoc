@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Security.Claims;
 using IdentityServer4.Services;
 using Groupyfy.Security.IS.Extensions;
+using IdentityModel;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -88,13 +89,15 @@ namespace Microsoft.Extensions.DependencyInjection
                     {
                         
                         x.Authority = configuration.GetSection("IdentityServer:Authority").Value;
-                        x.ApiName = "groupyfyIS";
+                        x.ApiName = "groupyfy-api";
                         x.RequireHttpsMetadata = true;
                         x.JwtValidationClockSkew = TimeSpan.Zero;
                         x.SupportedTokens = SupportedTokens.Reference;
                         x.EnableCaching = true;
                         x.CacheDuration = TimeSpan.FromMinutes(1);
-                        x.RoleClaimType = ClaimTypes.Role;
+                        x.RoleClaimType = JwtClaimTypes.Role;
+                        x.ApiSecret = configuration.GetSection("GroupyfyAPI:Secret").Value;
+                        x.Validate();
                     });
 
             return builder;
