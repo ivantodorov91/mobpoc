@@ -41,7 +41,7 @@ namespace Groupyfy.Security.IS
                 {
                     ApiSecrets =
                     {
-                        new Secret(configuration.GetSection("GroupyfyAPI:Secret").Value)
+                        new Secret(configuration.GetSection("GroupyfyAPI:Secret").Value.Sha512())
                     }
                 }
             };
@@ -64,7 +64,7 @@ namespace Groupyfy.Security.IS
                     AllowedGrantTypes = GrantTypes.Implicit,
                     AllowAccessTokensViaBrowser = true,
                     RequireConsent = false,
-
+                    
                     //change to js
                     RedirectUris =
                     {

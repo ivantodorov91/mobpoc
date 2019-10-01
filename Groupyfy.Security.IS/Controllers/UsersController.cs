@@ -1,4 +1,6 @@
 ﻿using Groupyfy.Security.Persistence;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure;
 using System;
@@ -36,6 +38,16 @@ namespace Groupyfy.Security.IS.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpGet("roles")]
+        [Authorize(AuthenticationSchemes = IdentityServerAuthenticationDefaults.AuthenticationScheme)]
+        public async Task<ActionResult<IList<KeyValuePair<string, Guid?>>>> GetSystemUserRoles()
+        {
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
+            var roles = await _userManager.GetGroupyfyRolesAsync(user);
+
+            return Ok(roles);
         }
     }
 
